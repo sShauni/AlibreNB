@@ -17,6 +17,7 @@ Requisitos: Python 3.8+  (tkinter e sqlite3 ja vem na instalacao padrao).
 """
 
 import os
+import sys
 import random
 import sqlite3
 import tkinter as tk
@@ -27,13 +28,21 @@ from tkinter import ttk, messagebox
 # ============================================================
 
 PREFIXOS = ["ALM", "FAB", "MON", "COM"]          # prefixos disponiveis (editavel pelo usuario)
-METODOS  = ["MAC", "CUT", "CST", "INJ", "PRT", "OEM", "ASM", "WLD", "BND"]  # metodos de manufatura
+METODOS  = ["USI", "COR", "FUN", "INJ", "IMP", "COM"]  # metodos de manufatura
 N_DIGITOS = 7                                    # quantidade de digitos do numero
 MAX_TENTATIVAS = 1000                            # tentativas para achar numero livre
 
-# Caminho do registro local. Coloque em um local COMPARTILHADO (rede do PDM)
-# para que todos os usuarios validem contra o mesmo registro.
-REGISTRO_DB = os.path.join(os.path.dirname(os.path.abspath(__file__)), "numeracao_pecas.db")
+# Pasta-base estavel: ao lado do .exe quando compilado (PyInstaller),
+# ou ao lado do .py quando rodando pelo interpretador.
+if getattr(sys, "frozen", False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Caminho do registro local. RECOMENDADO: aponte para uma pasta de rede
+# COMPARTILHADA (junto do PDM) para que todos validem contra o mesmo registro,
+# ex.: REGISTRO_DB = r"\\servidor\pdm\numeracao_pecas.db"
+REGISTRO_DB = os.path.join(BASE_DIR, "numeracao_pecas.db")
 
 # Ligue para tambem consultar o banco do Alibre PDM (ver existe_no_pdm()).
 CHECAR_NO_PDM = False
