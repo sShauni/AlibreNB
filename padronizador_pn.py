@@ -27,8 +27,8 @@ from tkinter import ttk, messagebox
 #  CONFIGURACAO  -- ajuste estas listas/valores ao seu padrao
 # ============================================================
 
-PREFIXOS = ["ALM", "FAB", "MON", "COM"]          # prefixos disponiveis (editavel pelo usuario)
-METODOS  = ["USI", "COR", "FUN", "INJ", "IMP", "COM"]  # metodos de manufatura
+PREFIXOS = ["ALM", "TAG", "COM"]          # prefixos disponiveis (editavel pelo usuario)
+METODOS  = ["MAC", "CUT", "CST", "INJ", "PRT", "OEM", "ASM", "WLD", "BND"]  # metodos de manufatura
 N_DIGITOS = 7                                    # quantidade de digitos do numero
 MAX_TENTATIVAS = 1000                            # tentativas para achar numero livre
 
