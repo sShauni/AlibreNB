@@ -1,0 +1,18 @@
+# Ignorar pastas de compilação do PyInstaller
+build/
+dist/
+*.spec
+
+# Ignorar arquivos temporários do Python
+__pycache__/
+*.pyc
+
+# Ignorar dados do usuário e configurações locais
+config_usuario.json
+registro_pecas.csv
+
+# Ignorar o ambiente virtual (se você usar venv)
+venv/
+.env
+
+numeracao_pecas.db
